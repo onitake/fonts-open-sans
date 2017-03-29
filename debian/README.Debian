@@ -4,4 +4,5 @@ You can also get it from the Google web font library:
 https://fonts.google.com/specimen/Open+Sans
 
 The package version (1.10) was obtained from the ttf metadata
-using otfdump.
+using otfdump. One of the fonts (OpenSans-CondBold.ttf) says
+it's 1.11, but all the others have version tag 1.10.
