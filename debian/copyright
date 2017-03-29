@@ -1,0 +1,16 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Open Sans
+Source: http://www.opensans.com/
+
+Files: *
+Copyright:
+ Digitized data copyright (c) 2010-2011, Google Corporation.
+License: Apache-2.0
+
+Files: debian/*
+Copyright:
+ Copyright (c) 2017, Gregor Riepl <onitake@gmail.com>
+License: Apache-2.0
+
+License: Apache-2.0
+ Please see /usr/share/common-licenses/Apache-2.0

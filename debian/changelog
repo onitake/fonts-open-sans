@@ -1,0 +1,5 @@
+fonts-open-sans (1.10-1) unstable; urgency=medium
+
+  * Initial release. (Closes: #754785)
+
+ -- Gregor Riepl <onitake@gmail.com>  Tue, 28 Mar 2017 23:59:06 +0200
