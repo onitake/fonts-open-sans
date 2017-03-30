@@ -1,0 +1,30 @@
+fonts-open-sans
+---------------
+
+The upstream website (http://www.opensans.com) does not publish
+any version information, and it is unclear if and how the font
+will ever be updated.
+
+It is distributed in the form of a two zip files, open-sans.zip and
+open-sans-condensed.zip. These need to be repackaged to comply
+with debian source package standards.
+
+To find out if an update was released, you should download and
+unpack the fonts manually, then use otfdump to find out if they
+have a new version:
+
+for i in *.ttf; do echo $i; otfdump $i | grep '(nameID 5 "Version' ; done
+
+In case most of them differ from the current package version,
+a new release should be made.
+
+To accomplish this, debian/rules includes a script that does most of
+the work for you. Update the changelog first:
+
+dch -i
+
+Then run the tarball script (it needs wget and unzip):
+
+debian/rules get-orig-source
+
+This should produce a new ../fonts-open-sans_<version>.tar.xz file.
