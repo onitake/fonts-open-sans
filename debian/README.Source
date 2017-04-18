@@ -5,26 +5,44 @@ The upstream website (http://www.opensans.com) does not publish
 any version information, and it is unclear if and how the font
 will ever be updated.
 
-It is distributed in the form of a two zip files, open-sans.zip and
+The font is distributed in the form of a two zip files, open-sans.zip and
 open-sans-condensed.zip. These need to be repackaged to comply
 with debian source package standards.
 
 To find out if an update was released, you should download and
 unpack the fonts manually, then use otfdump to find out if they
-have a new version:
+have a new version.
+
+
+Download the current font packages first:
+
+wget http://www.opensans.com/download/open-sans.zip http://www.opensans.com/download/open-sans-condensed.zip
+
+Unpack them into the source repository:
+
+unzip -o open-sans.zip
+unzip -o open-sans-condensed.zip
+
+Test if any of the files are tagged with a new version:
 
 for i in *.ttf; do echo $i; otfdump $i | grep '(nameID 5 "Version' ; done
 
-In case most of them differ from the current package version,
-a new release should be made.
+In case any of the versions differ from the Debian package, you should
+prepare a new release.
+
 
 To accomplish this, debian/rules includes a script that does most of
 the work for you. Update the changelog first:
 
-dch -i
+dch -v <NEW_VERSION>-1
 
-Then run the tarball script (it needs wget and unzip):
+Replace <NEW_VERSION> with the new upstream version, as determined above,
+and enter a suitable changelog line. For example: New upstream release
+
+Then run the tarball script (it uses wget and unzip):
 
 debian/rules get-orig-source
 
 This should produce a new ../fonts-open-sans_<version>.tar.xz file.
+
+Commit the updated TTFs and Debian changelog, then release the new package.
